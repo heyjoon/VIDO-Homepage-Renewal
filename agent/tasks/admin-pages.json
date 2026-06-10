@@ -1,0 +1,61 @@
+{
+  "area": "admin-pages",
+  "branch": "redesign/admin-foundation",
+  "tasks": [
+    {
+      "id": "AD-001",
+      "title": "Inventory admin routes and permissions",
+      "status": "todo",
+      "role": "Admin Worker",
+      "acceptanceCriteria": [
+        "Admin routes are listed",
+        "Auth and role checks are identified",
+        "Unknown permission gaps are documented"
+      ]
+    },
+    {
+      "id": "AD-002",
+      "title": "Build admin dashboard shell",
+      "status": "todo",
+      "role": "Admin Worker",
+      "acceptanceCriteria": [
+        "Admin dashboard has stable navigation",
+        "Shows operational summary stats",
+        "Uses dense dashboard layout rather than marketing layout"
+      ]
+    },
+    {
+      "id": "AD-003",
+      "title": "Add artwork review table",
+      "status": "todo",
+      "role": "Admin Worker",
+      "acceptanceCriteria": [
+        "Table shows artwork status and owner",
+        "Filters by status",
+        "Review actions are explicit and auditable"
+      ]
+    },
+    {
+      "id": "AD-004",
+      "title": "Add contest management table",
+      "status": "todo",
+      "role": "Admin Worker",
+      "acceptanceCriteria": [
+        "Table shows contest status, dates, and submission count",
+        "Create/edit flows are clear",
+        "Dangerous actions require confirmation"
+      ]
+    },
+    {
+      "id": "AD-005",
+      "title": "Add submission review table",
+      "status": "todo",
+      "role": "Admin Worker",
+      "acceptanceCriteria": [
+        "Table shows user, contest, artwork, and status",
+        "Supports review status changes",
+        "Protects against unauthorized access"
+      ]
+    }
+  ]
+}
