@@ -19,11 +19,13 @@ Rules:
 7. Add tests only when the task touches behavior or shared contracts.
 8. Run available lint/build/test scripts.
 9. If the app cannot be run, explain why and verify by static inspection.
-10. Summarize changed files, verification, and remaining risk.
+10. Show the result before ending: open the page if possible, or provide the exact preview URL, deployed URL, local file link, screenshot path, or route plus command needed to view it.
+11. Summarize changed files, verification, remaining risk, and what was shown.
 
 Expected final response:
 - Task completed
 - Files changed
 - Verification
+- Shown result
 - Follow-up task IDs
 ```
