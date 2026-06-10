@@ -1,6 +1,6 @@
 # Deployment Readiness
 
-This branch prepares the VIDO homepage renewal for static deployment.
+This branch prepares a scoped VIDO.gallery extension for static deployment review.
 
 ## Current Target
 
@@ -12,6 +12,15 @@ Expected project URL after Pages is enabled:
 https://heyjoon.github.io/VIDO-Homepage-Renewal/
 ```
 
+## Product Scope
+
+This branch is not a full VIDO.gallery rebuild. The intended direction is:
+
+- Keep existing `https://vido.gallery/` product flows as the base experience.
+- Add the contest home/list/notice/FAQ module based on `https://html.justbuild.kr/vido/`.
+- Connect contest submission to existing VIDO artwork upload and My Page concepts.
+- Treat direct ZIP upload as a fallback path, not the main submission path.
+
 ## Files
 
 - `next.config.mjs` enables `output: "export"`.
@@ -19,7 +28,7 @@ https://heyjoon.github.io/VIDO-Homepage-Renewal/
 - `public/.nojekyll` prevents GitHub Pages from filtering the exported `_next` assets.
 - `.github/workflows/deploy-pages.yml` verifies the build and deploys `./out` to GitHub Pages.
 - `.gitignore` keeps local install and build artifacts out of the repo.
-- `docs/vido-gallery-feature-inventory.md` records existing VIDO.gallery surfaces that the renewal must preserve.
+- `docs/contest-extension-scope.md` records the narrowed contest-only integration scope.
 
 ## Local Verification
 
@@ -59,7 +68,6 @@ Actions -> Deploy Next.js static site to GitHub Pages -> Run workflow
 ## Routes Included
 
 - `/`
-- `/full-demo`
 - `/media-art`
 - `/awards`
 - `/awards/apply`
@@ -67,20 +75,20 @@ Actions -> Deploy Next.js static site to GitHub Pages -> Run workflow
 - `/mypage`
 - `/admin`
 
-## Full Mock Coverage
+## Contest Extension Coverage
 
-`/full-demo` is the integrated VIDO.gallery renewal mock. It includes visible states for:
+`/awards` now mirrors the justbuild contest-home information structure:
 
-- VIDO Gallery
-- Media Art browse/search/tag/sort/detail concepts
-- Exhibition and Edition concepts
-- Artist / Author surfaces
-- Collector and Subscription
-- Login / Signup / Account recovery surfaces
-- My Page / My Art / Dashboard / Payment
-- Awards submission using existing VIDO artworks
-- Admin artwork and submission review
-- FAQ / Report / Contact
+- 공모전 통합 플랫폼 hero
+- 진행중 공모전 CTA
+- 내 접수 내역 CTA
+- 인기 공모전
+- 모든 공모전 list cards
+- 공지사항
+- 통합 FAQ
+- VIDO 작품으로 접수 안내
+
+`/awards/apply` keeps the intended connection point for selecting an existing VIDO artwork and using ZIP upload only as a fallback.
 
 ## Pre-Deploy Checklist
 
@@ -89,12 +97,11 @@ Actions -> Deploy Next.js static site to GitHub Pages -> Run workflow
 - The Pages workflow completes successfully on `main`.
 - The deployed URL opens without missing CSS or JavaScript assets.
 - Navigation works for the included routes.
-- `/full-demo` preserves the existing VIDO.gallery feature groups while adding Awards/Admin mock flow.
+- `/awards` clearly reads as a contest module added onto VIDO.gallery, not as a replacement for the live site.
 
 ## Known Limitations
 
 - This is a frontend scaffold and preview build.
-- Mock auth, mock upload, mock DB, contest submission, and admin review use browser-local state.
 - Real auth, upload, DB, contest submission, and mypage APIs are not implemented here.
 - Awards backend belongs to `codex/awards-contests`.
 - User dashboard backend belongs to `codex/user-mypage`.
