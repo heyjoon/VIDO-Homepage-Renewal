@@ -1,0 +1,293 @@
+.page {
+  min-height: 100vh;
+  background: #f6f6f6;
+}
+
+.hero {
+  background: #0b0b0b;
+  color: #fff;
+  padding: 72px 0 46px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr);
+  gap: 30px;
+  align-items: end;
+}
+
+.hero h1 {
+  max-width: 840px;
+  font-size: 58px;
+  line-height: 1.04;
+  font-weight: 950;
+}
+
+.hero p {
+  max-width: 660px;
+  margin-top: 22px;
+  color: rgba(255,255,255,.72);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.sessionPanel {
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  background: rgba(255,255,255,.08);
+  padding: 18px;
+}
+
+.sessionPanel strong,
+.sessionPanel span {
+  display: block;
+}
+
+.sessionPanel span {
+  margin-top: 6px;
+  color: rgba(255,255,255,.66);
+  font-size: 14px;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.actionRow button,
+.actionRow a {
+  min-height: 42px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 950;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.actionRow button.secondary {
+  background: transparent;
+  color: #fff;
+}
+
+.tabs {
+  position: sticky;
+  top: 68px;
+  z-index: 10;
+  border-bottom: 1px solid var(--line);
+  background: rgba(246,246,246,.94);
+  backdrop-filter: blur(16px);
+}
+
+.tabScroller {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 0;
+}
+
+.tabScroller button {
+  white-space: nowrap;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--muted);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.tabScroller button.active {
+  border-color: #111;
+  background: #111;
+  color: #fff;
+}
+
+.section {
+  padding: 54px 0;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.sectionHead h2 {
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.sectionHead p {
+  max-width: 440px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.card,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 20px;
+}
+
+.card h3,
+.panel h3 {
+  margin: 12px 0 8px;
+  font-size: 21px;
+}
+
+.card p,
+.panel p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+  background: #eafaf4;
+  color: #087a59;
+  padding: 7px 9px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.badgeBlue {
+  background: #edf3ff;
+  color: #1f5ee5;
+}
+
+.badgePink {
+  background: #fff0f4;
+  color: #d83163;
+}
+
+.mockVisual {
+  min-height: 144px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, transparent 0 40%, rgba(255,255,255,.12) 40% 44%, transparent 44%),
+    repeating-linear-gradient(90deg, #111 0 18px, #3978ff 18px 20px, #111 20px 38px),
+    #111;
+}
+
+.mockVisual.alt {
+  background:
+    radial-gradient(circle at 20% 20%, #ff4f7b, transparent 22%),
+    linear-gradient(135deg, #0f0f0f, #1b1f2a 45%, #00c58e);
+}
+
+.mockVisual.photo {
+  background:
+    linear-gradient(135deg, #f3f3f3, #c9d4dc),
+    #ddd;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.listItem strong,
+.listItem span {
+  display: block;
+}
+
+.listItem span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.controls button,
+.controls select,
+.controls input {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0 12px;
+  font-weight: 850;
+}
+
+.controls button {
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+}
+
+.controls button.light {
+  background: #fff;
+  color: #111;
+}
+
+.notice {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 920px) {
+  .heroGrid,
+  .grid3,
+  .grid2,
+  .sectionHead {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .sessionPanel,
+  .card + .card,
+  .panel + .panel {
+    margin-top: 14px;
+  }
+
+  .sectionHead p {
+    margin-top: 12px;
+  }
+}
