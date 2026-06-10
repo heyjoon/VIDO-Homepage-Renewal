@@ -5,13 +5,22 @@ import type { FormEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./AwardsApply.module.css";
 
-type SubmitMethod = "vido" | "zip";
+type ArtworkStatus = "READY" | "PROCESSING";
+
+type Artwork = {
+  id: string;
+  title: string;
+  detail: string;
+  status: ArtworkStatus;
+  duration: string;
+  resolution: string;
+  tone: "toneA" | "toneB" | "toneC" | "toneD";
+};
 
 type Submission = {
   id: string;
   number: string;
   contestTitle: string;
-  method: SubmitMethod;
   artworkTitle: string;
   applicantName: string;
   email: string;
@@ -22,6 +31,7 @@ type Submission = {
 };
 
 const STORAGE_KEY = "vido.awards.submissions.v1";
+const INITIAL_VISIBLE_COUNT = 12;
 
 const contests = [
   {
@@ -38,11 +48,29 @@ const contests = [
   },
 ];
 
-const artworks = [
-  { id: "signal-archive", title: "Signal Archive 01", detail: "READY · 4K video · 03:12" },
-  { id: "urban-light", title: "Urban Light Study", detail: "READY · projection · 01:48" },
-  { id: "data-field", title: "Data Field Draft", detail: "PROCESSING · preview rendering" },
-];
+const artworks: Artwork[] = Array.from({ length: 30 }, (_, index) => {
+  const titles = [
+    "Signal Archive",
+    "Urban Light Study",
+    "Heritage Wave",
+    "Digital Gate",
+    "City Pulse",
+    "Memory Facade",
+  ];
+  const status: ArtworkStatus = index % 7 === 3 ? "PROCESSING" : "READY";
+  const tone = ["toneA", "toneB", "toneC", "toneD"][index % 4] as Artwork["tone"];
+  const sequence = String(index + 1).padStart(2, "0");
+
+  return {
+    id: `artwork-${sequence}`,
+    title: `${titles[index % titles.length]} ${sequence}`,
+    detail: `${status} · media art · ${index % 2 ? "projection" : "4K video"}`,
+    status,
+    duration: `0${(index % 4) + 1}:${String(18 + index).padStart(2, "0")}`,
+    resolution: index % 3 === 0 ? "3840 x 2160" : "1920 x 1080",
+    tone,
+  };
+});
 
 function loadSubmissions(): Submission[] {
   if (typeof window === "undefined") {
@@ -67,9 +95,10 @@ function createSubmissionNumber() {
 
 export default function AwardsApplyPage() {
   const [contestId, setContestId] = useState(contests[0].id);
-  const [method, setMethod] = useState<SubmitMethod>("vido");
   const [artworkId, setArtworkId] = useState(artworks[0].id);
-  const [fallbackFile, setFallbackFile] = useState("");
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | ArtworkStatus>("READY");
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
   const [applicantName, setApplicantName] = useState("VIDO Artist");
   const [email, setEmail] = useState("artist@vido.local");
   const [phone, setPhone] = useState("010-0000-0000");
@@ -84,10 +113,26 @@ export default function AwardsApplyPage() {
     setSubmissions(loadSubmissions());
   }, []);
 
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+  }, [query, statusFilter]);
+
   const selectedContest = useMemo(
     () => contests.find((contest) => contest.id === contestId) ?? contests[0],
     [contestId],
   );
+
+  const filteredArtworks = useMemo(() => {
+    const keyword = query.trim().toLowerCase();
+
+    return artworks.filter((artwork) => {
+      const matchesStatus = statusFilter === "all" || artwork.status === statusFilter;
+      const matchesKeyword = !keyword || artwork.title.toLowerCase().includes(keyword) || artwork.detail.toLowerCase().includes(keyword);
+      return matchesStatus && matchesKeyword;
+    });
+  }, [query, statusFilter]);
+
+  const visibleArtworks = filteredArtworks.slice(0, visibleCount);
 
   const selectedArtwork = useMemo(
     () => artworks.find((artwork) => artwork.id === artworkId) ?? artworks[0],
@@ -95,6 +140,7 @@ export default function AwardsApplyPage() {
   );
 
   const canSubmit = selectedContest.status === "접수중";
+  const readyCount = artworks.filter((artwork) => artwork.status === "READY").length;
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -110,13 +156,8 @@ export default function AwardsApplyPage() {
       return;
     }
 
-    if (method === "vido" && !selectedArtwork.detail.startsWith("READY")) {
-      setError("VIDO 작품 제출은 READY 상태 작품만 가능합니다.");
-      return;
-    }
-
-    if (method === "zip" && !fallbackFile) {
-      setError("ZIP fallback 제출을 선택한 경우 작품 파일을 선택해주세요.");
+    if (selectedArtwork.status !== "READY") {
+      setError("공모전 접수는 VIDO에 업로드되어 READY 상태인 작품만 가능합니다.");
       return;
     }
 
@@ -135,8 +176,7 @@ export default function AwardsApplyPage() {
       id: `${Date.now()}`,
       number: createSubmissionNumber(),
       contestTitle: selectedContest.title,
-      method,
-      artworkTitle: method === "vido" ? selectedArtwork.title : fallbackFile,
+      artworkTitle: selectedArtwork.title,
       applicantName: applicantName.trim(),
       email: email.trim(),
       phone: phone.trim(),
@@ -181,10 +221,9 @@ export default function AwardsApplyPage() {
       <section className={styles.hero} aria-label="Contest application hero">
         <div className="container">
           <p className={styles.eyebrow}>Contest Application</p>
-          <h1>접수하기를 누르면 실제 접수번호가 발급됩니다.</h1>
+          <h1>접수는 내 VIDO 작품 선택으로만 진행합니다.</h1>
           <p>
-            현재 버전은 백엔드 연결 전 프론트엔드 접수 MVP입니다. 입력 검증 후 접수내역을 브라우저에 저장하고,
-            이후 API만 연결하면 같은 화면을 실제 운영 접수로 전환할 수 있습니다.
+            작품 파일을 따로 ZIP으로 받지 않습니다. VIDO.gallery에 업로드되어 READY 상태가 된 작품만 공모전에 접수할 수 있습니다.
           </p>
         </div>
       </section>
@@ -212,52 +251,69 @@ export default function AwardsApplyPage() {
                 </select>
               </label>
 
-              <div className={styles.methodGrid}>
-                <button
-                  className={method === "vido" ? styles.methodActive : styles.methodButton}
-                  type="button"
-                  onClick={() => setMethod("vido")}
-                >
-                  <strong>내 VIDO 작품 선택</strong>
-                  <span>기본 제출 방식</span>
-                </button>
-                <button
-                  className={method === "zip" ? styles.methodActive : styles.methodButton}
-                  type="button"
-                  onClick={() => setMethod("zip")}
-                >
-                  <strong>ZIP 직접 업로드</strong>
-                  <span>보조 제출 방식</span>
-                </button>
-              </div>
+              <section className={styles.artworkPicker} aria-label="VIDO artwork picker">
+                <div className={styles.pickerHead}>
+                  <div>
+                    <p className={styles.eyebrow}>Step 2</p>
+                    <h2>내 VIDO 작품 선택</h2>
+                    <p>총 {artworks.length}개 작품 중 READY {readyCount}개를 접수에 사용할 수 있습니다.</p>
+                  </div>
+                  <Link className={styles.uploadLink} href="/artworks/upload">
+                    새 작품 업로드
+                  </Link>
+                </div>
 
-              {method === "vido" ? (
-                <div className={styles.artworkList}>
-                  {artworks.map((artwork) => (
-                    <label className={styles.artworkCard} key={artwork.id}>
-                      <div>
+                <div className={styles.pickerTools}>
+                  <input
+                    aria-label="작품 검색"
+                    placeholder="작품명, 형식 검색"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                  />
+                  <select
+                    aria-label="작품 상태 필터"
+                    value={statusFilter}
+                    onChange={(event) => setStatusFilter(event.target.value as "all" | ArtworkStatus)}
+                  >
+                    <option value="READY">READY 작품만</option>
+                    <option value="all">전체 작품</option>
+                    <option value="PROCESSING">PROCESSING</option>
+                  </select>
+                </div>
+
+                <div className={styles.selectedPreview}>
+                  <div className={`${styles.previewImage} ${styles[selectedArtwork.tone]}`} aria-hidden="true" />
+                  <div>
+                    <span className={selectedArtwork.status === "READY" ? styles.openBadge : styles.closedBadge}>{selectedArtwork.status}</span>
+                    <h3>{selectedArtwork.title}</h3>
+                    <p>{selectedArtwork.resolution} · {selectedArtwork.duration} · {selectedArtwork.detail}</p>
+                  </div>
+                </div>
+
+                <div className={styles.artworkGrid}>
+                  {visibleArtworks.map((artwork) => (
+                    <button
+                      className={artworkId === artwork.id ? styles.artworkCardActive : styles.artworkCard}
+                      key={artwork.id}
+                      type="button"
+                      onClick={() => setArtworkId(artwork.id)}
+                    >
+                      <span className={`${styles.artworkThumb} ${styles[artwork.tone]}`} aria-hidden="true" />
+                      <span className={styles.artworkMeta}>
                         <strong>{artwork.title}</strong>
                         <span>{artwork.detail}</span>
-                      </div>
-                      <input
-                        checked={artworkId === artwork.id}
-                        name="artwork"
-                        onChange={() => setArtworkId(artwork.id)}
-                        type="radio"
-                      />
-                    </label>
+                      </span>
+                      <span className={artwork.status === "READY" ? styles.readyDot : styles.processingDot}>{artwork.status}</span>
+                    </button>
                   ))}
                 </div>
-              ) : (
-                <label className={styles.field}>
-                  <span>작품 파일</span>
-                  <input
-                    accept=".zip,.mp4,.mov,.jpg,.png"
-                    onChange={(event) => setFallbackFile(event.target.files?.[0]?.name ?? "")}
-                    type="file"
-                  />
-                </label>
-              )}
+
+                {visibleCount < filteredArtworks.length ? (
+                  <button className={styles.moreButton} type="button" onClick={() => setVisibleCount((count) => count + 12)}>
+                    작품 더보기 ({visibleCount}/{filteredArtworks.length})
+                  </button>
+                ) : null}
+              </section>
 
               <div className={styles.twoCol}>
                 <label className={styles.field}>
@@ -286,14 +342,14 @@ export default function AwardsApplyPage() {
               </label>
               <label className={styles.checkRow}>
                 <input checked={agreeSubmit} onChange={(event) => setAgreeSubmit(event.target.checked)} type="checkbox" />
-                <span>선택한 작품과 신청자 정보로 접수하는 것에 동의합니다.</span>
+                <span>선택한 VIDO 작품과 신청자 정보로 접수하는 것에 동의합니다.</span>
               </label>
 
               {error ? <p className={styles.error}>{error}</p> : null}
 
               <div className={styles.actionRow}>
                 <button className={styles.primaryButton} type="submit">
-                  접수 완료하기
+                  선택한 작품으로 접수 완료
                 </button>
                 <button className={styles.secondaryButton} type="button" onClick={resetDemoSubmissions}>
                   접수내역 초기화
@@ -317,7 +373,7 @@ export default function AwardsApplyPage() {
                 ) : (
                   <div>
                     <h2>아직 접수 전입니다.</h2>
-                    <p>필수 정보를 입력하고 접수 완료하기를 누르면 접수번호가 발급됩니다.</p>
+                    <p>READY 상태의 VIDO 작품을 선택하고 접수 완료를 누르면 접수번호가 발급됩니다.</p>
                   </div>
                 )}
               </div>
