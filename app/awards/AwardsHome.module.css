@@ -1,0 +1,324 @@
+.page {
+  min-height: 100vh;
+  background: #f7f7f5;
+  color: #101010;
+}
+
+.hero {
+  background: #111;
+  color: #fff;
+  padding: 96px 0 72px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .68fr);
+  gap: 32px;
+  align-items: end;
+}
+
+.heroCopy h1 {
+  max-width: 850px;
+  font-size: 58px;
+  font-weight: 950;
+  line-height: 1.06;
+}
+
+.heroCopy p:not(.eyebrow) {
+  max-width: 740px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, .74);
+  font-size: 18px;
+  line-height: 1.78;
+}
+
+.eyebrow,
+.kicker,
+.panelLabel {
+  margin: 0 0 14px;
+  color: #00c58e;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.actions,
+.actionsCompact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.primaryButton,
+.secondaryButton,
+.darkButton,
+.lineButton,
+.panelLink {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.primaryButton,
+.panelLink {
+  background: #fff;
+  color: #111;
+}
+
+.secondaryButton {
+  border-color: rgba(255, 255, 255, .28);
+  color: #fff;
+}
+
+.darkButton {
+  background: #111;
+  color: #fff;
+}
+
+.lineButton {
+  border-color: #d8d8d3;
+  background: #fff;
+  color: #111;
+}
+
+.submitPanel {
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .08);
+  padding: 22px;
+}
+
+.submitPanel h2 {
+  font-size: 25px;
+  line-height: 1.24;
+}
+
+.submitPanel p {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, .68);
+  line-height: 1.7;
+}
+
+.featured,
+.contests,
+.guide {
+  padding: 72px 0;
+}
+
+.featured {
+  background: #fff;
+}
+
+.contests {
+  background: #f7f7f5;
+}
+
+.guide {
+  background: #fff;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.sectionHead h2 {
+  font-size: 38px;
+  font-weight: 950;
+  line-height: 1.16;
+}
+
+.sectionDescription {
+  max-width: 420px;
+  color: #686a6f;
+  line-height: 1.7;
+}
+
+.status,
+.openBadge,
+.mutedBadge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.status,
+.openBadge {
+  background: #e7fbf3;
+  color: #087a59;
+}
+
+.mutedBadge {
+  background: #eeeeea;
+  color: #5f6064;
+}
+
+.featuredCard {
+  display: grid;
+  grid-template-columns: minmax(360px, .86fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid #ddddda;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.banner {
+  min-height: 320px;
+  display: flex;
+  align-items: end;
+  padding: 26px;
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .52)),
+    repeating-linear-gradient(90deg, #121212 0 26px, #3978ff 26px 28px, #121212 28px 58px),
+    #111;
+  color: rgba(255, 255, 255, .86);
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.featuredBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 34px;
+}
+
+.featuredBody h3,
+.contestCard h3 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.featuredBody p:not(.kicker),
+.contestCard p {
+  margin-top: 14px;
+  color: #686a6f;
+  line-height: 1.7;
+}
+
+.contestGrid,
+.guideGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.guideGrid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.contestCard,
+.guidePanel {
+  border: 1px solid #ddddda;
+  border-radius: 8px;
+  background: #fff;
+  padding: 22px;
+}
+
+.cardTopline,
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #686a6f;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.metaList {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0 0;
+}
+
+.metaList div {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 1px solid #ecece8;
+  padding-top: 10px;
+}
+
+.metaList dt,
+.metaList dd {
+  margin: 0;
+  font-size: 13px;
+}
+
+.metaList dt {
+  color: #77797e;
+}
+
+.metaList dd {
+  color: #111;
+  font-weight: 850;
+  text-align: right;
+}
+
+.guidePanel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guidePanel li {
+  border-top: 1px solid #ecece8;
+  padding: 15px 0;
+  font-weight: 850;
+}
+
+.guidePanel li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.panelHeader a {
+  color: #3978ff;
+}
+
+@media (max-width: 920px) {
+  .hero {
+    padding: 72px 0 52px;
+  }
+
+  .heroGrid,
+  .featuredCard,
+  .sectionHead,
+  .contestGrid,
+  .guideGrid {
+    display: block;
+  }
+
+  .heroCopy h1 {
+    font-size: 40px;
+  }
+
+  .submitPanel,
+  .contestCard + .contestCard,
+  .guidePanel + .guidePanel {
+    margin-top: 16px;
+  }
+
+  .sectionDescription {
+    margin-top: 12px;
+  }
+
+  .banner {
+    min-height: 220px;
+  }
+}
