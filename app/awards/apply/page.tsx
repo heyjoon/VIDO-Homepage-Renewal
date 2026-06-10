@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { FormEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./AwardsApply.module.css";
 
@@ -95,7 +96,7 @@ export default function AwardsApplyPage() {
 
   const canSubmit = selectedContest.status === "접수중";
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
 
