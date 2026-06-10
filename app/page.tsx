@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HomeBridge from "./components/HomeBridge";
 
 const stats = [
   {
@@ -78,68 +79,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="band bridge" aria-label="Upload to contest bridge">
-        <div className="container">
-          <div className="section-head">
-            <h2>작품을 올리면, 공모전 제출이 쉬워집니다.</h2>
-            <p>
-              VIDO에 업로드한 미디어아트는 내 작품으로 저장됩니다. 공모전 접수
-              단계에서 파일을 다시 찾거나 압축해 올릴 필요 없이, 저장된 작품을
-              선택해 바로 제출할 수 있습니다.
-            </p>
-          </div>
-
-          <div className="bridge-layout">
-            <div className="panel">
-              <div className="panel-head">
-                <strong>내 VIDO 상태</strong>
-                <span className="badge">READY</span>
-              </div>
-              <div className="panel-body">
-                <div className="status-card">
-                  <div>
-                    <strong>제출 가능한 내 작품 3개</strong>
-                    <span>업로드 완료 작품을 공모전에 바로 제출할 수 있습니다.</span>
-                  </div>
-                  <span className="badge">READY</span>
-                </div>
-                <Link className="status-card" href="/awards">
-                  <div>
-                    <strong>진행중 공모전 4개</strong>
-                    <span>조건에 맞는 공모전을 홈에서 바로 탐색합니다.</span>
-                  </div>
-                  <span className="badge blue">OPEN</span>
-                </Link>
-              </div>
-            </div>
-
-            <div className="panel">
-              <div className="panel-head">
-                <strong>내 VIDO 작품</strong>
-                <span className="badge">공모전 제출 가능</span>
-              </div>
-              <div className="panel-body">
-                <div className="artwork-grid">
-                  <article className="artwork">
-                    <div className="thumb one" aria-hidden="true" />
-                    <div className="artwork-content">
-                      <strong>Signal Archive 01</strong>
-                      <span>READY · 4K video · 03:12</span>
-                    </div>
-                  </article>
-                  <article className="artwork">
-                    <div className="thumb two" aria-hidden="true" />
-                    <div className="artwork-content">
-                      <strong>Urban Light Study</strong>
-                      <span>READY · projection · 01:48</span>
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeBridge />
 
       <section className="band dark-band" aria-label="Next phases">
         <div className="container">
