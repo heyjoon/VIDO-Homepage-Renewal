@@ -1,6 +1,6 @@
 # VIDO Redesign Agent Runner Guide
 
-This folder contains explicit prompts and task queues for using Codex as a supervised redesign automation agent.
+This folder contains explicit prompts, task queues, and a TypeScript orchestrator for using Codex as a supervised redesign automation agent.
 
 ## Correct Mental Model
 
@@ -21,7 +21,7 @@ Use this to prove reliability before expanding into admin CRUD, permissions, aut
 ## Current Recommended Stack
 
 ```txt
-Codex CLI + AGENTS.md + .codex/agents
+Codex CLI + AGENTS.md + .codex/agents + agent/orchestrator
 ```
 
 Use:
@@ -29,7 +29,9 @@ Use:
 - `AGENTS.md` for durable repository-wide rules
 - `.codex/agents/page-renewal-worker.md` for implementation behavior
 - `.codex/agents/qa-reviewer.md` for verification and review behavior
+- `.codex/agents/orchestrator.md` for planner/developer/QA coordination behavior
 - `agent/prompts/04-run-page-renewal-mvp.md` for the first `codex exec` MVP loop
+- `agent/orchestrator` for the TypeScript planner -> developer -> QA runner
 
 ## Recommended Start
 
@@ -51,13 +53,19 @@ Then prove the MVP loop on a low-risk page section:
 codex exec --sandbox workspace-write "$(cat agent/prompts/04-run-page-renewal-mvp.md) TARGET_ROUTE=/ TARGET_SCOPE='upload-to-awards bridge section' BRANCH_SCOPE=redesign/homepage-public ACCEPTANCE_CRITERIA='CTA to upload, CTA to awards, responsive section, no unrelated route edits'"
 ```
 
-Then run one queued task at a time:
+## Orchestrated Run
+
+Use the TypeScript runner when you want planner -> developer -> QA in one command:
 
 ```bash
-codex exec --sandbox workspace-write "$(cat agent/prompts/02-run-one-task.md) TASK_ID=H-001"
+cd agent/orchestrator
+npm install
+npm run build
+node dist/index.js --dry-run --task H-002
+node dist/index.js --task H-002
 ```
 
-Review the branch diff:
+Review the branch diff separately when needed:
 
 ```bash
 codex exec --sandbox read-only "$(cat agent/prompts/03-review-diff.md)"
