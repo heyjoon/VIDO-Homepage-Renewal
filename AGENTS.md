@@ -39,6 +39,20 @@ For redesign work, Codex should follow this loop:
 6. Run available lint/build/test commands.
 7. Update the task status or write a short implementation note.
 8. Summarize changed files, verification, and remaining risk.
+9. End by showing the result: open the page when possible, or provide the exact preview URL, deployed URL, local file link, or screenshot path that lets the user see the work immediately.
+
+## Show-The-Work Rule
+
+Every VIDO redesign task must finish with a visible result for the user.
+
+Use the strongest available option:
+
+1. Open the running local page in the browser.
+2. If a browser cannot be opened, provide the localhost or deployed preview URL.
+3. If the app cannot run, provide a local HTML preview file or screenshot artifact.
+4. If no visual artifact exists, create a short preview note that names the route, expected screen state, and next command to view it.
+
+Do not end a frontend, admin, awards, or mypage task with only a text summary when a visual route or artifact can be shown.
 
 ## Design Direction
 
@@ -122,6 +136,8 @@ npm test
 ```
 
 If commands differ, use the repo's actual package scripts.
+
+After verification, show the result using the Show-The-Work Rule above.
 
 ## Official Codex Notes
 
