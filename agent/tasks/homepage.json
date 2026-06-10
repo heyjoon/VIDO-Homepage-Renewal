@@ -1,0 +1,54 @@
+{
+  "area": "homepage",
+  "branch": "redesign/homepage-public",
+  "tasks": [
+    {
+      "id": "H-001",
+      "title": "Build homepage hero with upload and contest CTAs",
+      "status": "todo",
+      "role": "Homepage Worker",
+      "acceptanceCriteria": [
+        "Hero explains VIDO as media-art upload and reuse platform",
+        "Primary CTA links to artwork upload",
+        "Secondary CTA links to Awards/Contest page",
+        "First viewport includes a visual media-art signal"
+      ]
+    },
+    {
+      "id": "H-002",
+      "title": "Add upload-to-contest bridge section",
+      "status": "todo",
+      "role": "Homepage Worker",
+      "acceptanceCriteria": [
+        "Section uses copy: 작품을 올리면 공모전 제출이 쉬워집니다",
+        "Shows state for users with READY artworks",
+        "Shows empty state for users without artworks",
+        "Links to upload and contest routes"
+      ]
+    },
+    {
+      "id": "H-003",
+      "title": "Add media-art gallery credibility section",
+      "status": "todo",
+      "role": "Homepage Worker",
+      "acceptanceCriteria": [
+        "Explains VIDO gallery value",
+        "Uses real or project-provided media/artwork assets when available",
+        "Avoids generic stock-style layout",
+        "Works on mobile and desktop"
+      ]
+    },
+    {
+      "id": "H-004",
+      "title": "Run homepage responsive QA",
+      "status": "todo",
+      "role": "QA Reviewer",
+      "acceptanceCriteria": [
+        "Desktop and mobile layouts verified",
+        "No overlapping text or controls",
+        "CTA links verified",
+        "Build/lint/test results documented"
+      ]
+    }
+  ]
+}
