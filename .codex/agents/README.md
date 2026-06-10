@@ -9,12 +9,20 @@ Use Codex CLI with:
 - `AGENTS.md` for durable repository rules
 - `.codex/agents/page-renewal-worker.md` for the first implementation agent
 - `.codex/agents/qa-reviewer.md` for review and verification behavior
+- `.codex/agents/orchestrator.md` for planner/developer/QA coordination
 - `agent/prompts/*.md` for explicit `codex exec` prompts
+- `agent/orchestrator` for the TypeScript runner
 
 The MVP agent does one page or one section at a time:
 
 ```txt
 analyze -> modify -> test/build -> review summary -> show result
+```
+
+The orchestrated runner does:
+
+```txt
+Planner -> Developer -> QA Reviewer -> JSON summary
 ```
 
 ## Recommended First Targets
@@ -32,5 +40,5 @@ Avoid starting with high-risk admin pages such as `/admin/users`, permissions, d
 
 1. Current: Codex CLI + `AGENTS.md` + `.codex/agents`
 2. Next: `codex exec` runs one task at a time
-3. Later: TypeScript task runner using Codex SDK
-4. Final: Agents SDK + Codex MCP orchestration for planner / developer / QA multi-agent flows
+3. Now scaffolded: TypeScript task runner under `agent/orchestrator`
+4. Final target: Agents SDK + Codex MCP orchestration for planner / developer / QA multi-agent flows
