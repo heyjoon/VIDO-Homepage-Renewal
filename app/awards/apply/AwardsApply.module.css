@@ -1,0 +1,462 @@
+.page {
+  min-height: 100vh;
+  background: #f7f7f5;
+  color: #101010;
+}
+
+.hero {
+  background: #111;
+  color: #fff;
+  padding: 72px 0 54px;
+}
+
+.hero h1 {
+  max-width: 880px;
+  font-size: 54px;
+  line-height: 1.08;
+  font-weight: 950;
+}
+
+.hero p:not(.eyebrow) {
+  max-width: 760px;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, .72);
+  font-size: 18px;
+  line-height: 1.74;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #00c58e;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.body {
+  padding: 56px 0 76px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, .42fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.formPanel,
+.receiptBox,
+.historyBox {
+  border: 1px solid #ddddda;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.formPanel {
+  padding: 24px;
+}
+
+.sidePanel {
+  position: sticky;
+  top: 86px;
+  display: grid;
+  gap: 16px;
+}
+
+.receiptBox,
+.historyBox {
+  padding: 22px;
+}
+
+.panelHead,
+.historyHead,
+.pickerHead {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.panelHead h2,
+.receiptBox h2,
+.pickerHead h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.pickerHead p:not(.eyebrow) {
+  margin-top: 8px;
+  color: #686a6f;
+  line-height: 1.6;
+}
+
+.openBadge,
+.closedBadge,
+.readyDot,
+.processingDot {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.openBadge,
+.readyDot {
+  background: #e7fbf3;
+  color: #087a59;
+}
+
+.closedBadge,
+.processingDot {
+  background: #eeeeea;
+  color: #5f6064;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.field span,
+.checkRow span {
+  color: #3f4146;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.field input,
+.field select,
+.field textarea,
+.pickerTools input,
+.pickerTools select {
+  width: 100%;
+  border: 1px solid #d8d8d3;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  padding: 13px 14px;
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.pickerTools input:focus,
+.pickerTools select:focus {
+  border-color: #3978ff;
+  box-shadow: 0 0 0 3px rgba(57, 120, 255, .12);
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.artworkPicker {
+  margin-top: 22px;
+  border-top: 1px solid #ecece8;
+  padding-top: 24px;
+}
+
+.uploadLink {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #111;
+  border-radius: 8px;
+  padding: 0 14px;
+  color: #111;
+  font-size: 13px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.pickerTools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.selectedPreview {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  border: 1px solid #d8d8d3;
+  border-radius: 8px;
+  background: #fbfbfa;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.selectedPreview h3 {
+  margin: 12px 0 8px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.selectedPreview p {
+  margin: 0;
+  color: #686a6f;
+  line-height: 1.65;
+}
+
+.previewImage,
+.artworkThumb {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #111;
+}
+
+.previewImage {
+  min-height: 132px;
+}
+
+.artworkThumb {
+  width: 92px;
+  min-width: 92px;
+  height: 64px;
+}
+
+.toneA {
+  background:
+    linear-gradient(135deg, transparent 0 42%, rgba(255,255,255,.18) 42% 46%, transparent 46%),
+    repeating-linear-gradient(90deg, #0d0d0e 0 16px, #3978ff 16px 18px, #0d0d0e 18px 34px),
+    #111;
+}
+
+.toneB {
+  background:
+    radial-gradient(circle at 22% 24%, #ff4f7b, transparent 23%),
+    linear-gradient(135deg, #111, #182336 48%, #00c58e);
+}
+
+.toneC {
+  background:
+    radial-gradient(circle at 78% 28%, rgba(255,255,255,.48), transparent 14%),
+    linear-gradient(135deg, #1f2430, #737f8f 50%, #d8dde1);
+}
+
+.toneD {
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.18) 0 12%, transparent 12% 28%, rgba(255,255,255,.12) 28% 36%, transparent 36%),
+    linear-gradient(135deg, #161616, #6246ea 52%, #e7c84e);
+}
+
+.artworkGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.artworkCard,
+.artworkCardActive {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 92px;
+  border: 1px solid #d8d8d3;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.artworkCardActive {
+  border-color: #3978ff;
+  box-shadow: 0 0 0 3px rgba(57, 120, 255, .12);
+}
+
+.artworkMeta {
+  display: block;
+  min-width: 0;
+  flex: 1;
+}
+
+.artworkMeta strong,
+.artworkMeta span {
+  display: block;
+}
+
+.artworkMeta strong {
+  overflow: hidden;
+  color: #111;
+  font-weight: 950;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artworkMeta span {
+  margin-top: 5px;
+  color: #686a6f;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.readyDot,
+.processingDot {
+  align-self: start;
+  min-height: 24px;
+  padding: 0 7px;
+}
+
+.moreButton {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 12px;
+  border: 1px solid #d8d8d3;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.error {
+  margin: 18px 0 0;
+  border: 1px solid #ffd0dc;
+  border-radius: 8px;
+  background: #fff4f7;
+  color: #b81848;
+  padding: 12px 14px;
+  font-weight: 850;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 48px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0 18px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.primaryButton {
+  background: #111;
+  color: #fff;
+}
+
+.secondaryButton {
+  border-color: #d8d8d3;
+  background: #fff;
+  color: #111;
+}
+
+.receiptBox p:not(.eyebrow),
+.emptyText {
+  margin-top: 10px;
+  color: #686a6f;
+  line-height: 1.65;
+}
+
+.receiptList {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.receiptList div {
+  display: grid;
+  gap: 4px;
+  border-top: 1px solid #ecece8;
+  padding-top: 10px;
+}
+
+.receiptList dt,
+.receiptList dd {
+  margin: 0;
+}
+
+.receiptList dt {
+  color: #77797e;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.receiptList dd {
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.historyHead span {
+  color: #686a6f;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.historyItem {
+  border-top: 1px solid #ecece8;
+  padding: 14px 0;
+}
+
+.historyItem strong,
+.historyItem span {
+  display: block;
+}
+
+.historyItem span {
+  margin-top: 5px;
+  color: #686a6f;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .layout,
+  .twoCol,
+  .pickerHead,
+  .pickerTools,
+  .selectedPreview,
+  .artworkGrid {
+    display: block;
+  }
+
+  .sidePanel {
+    position: static;
+    margin-top: 16px;
+  }
+
+  .uploadLink,
+  .twoCol .field + .field,
+  .pickerTools select,
+  .artworkCard + .artworkCard,
+  .artworkCardActive + .artworkCard,
+  .artworkCard + .artworkCardActive {
+    margin-top: 12px;
+  }
+
+  .previewImage {
+    margin-bottom: 14px;
+  }
+}
