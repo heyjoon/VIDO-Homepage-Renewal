@@ -61,6 +61,7 @@ export default function AwardsPage() {
           <Link href="#contests">공모전 목록</Link>
           <Link href="#notice">공지사항</Link>
           <Link href="#faq">FAQ</Link>
+          <Link className={styles.navApply} href="/awards/apply">접수하기</Link>
         </nav>
       </header>
 
@@ -75,9 +76,12 @@ export default function AwardsPage() {
               </h1>
               <p>
                 공모전 탐색부터 작품 제출, 접수 내역 관리까지 VIDO에서 간편하게 진행할 수 있습니다.
-                기존 VIDO.gallery 작품 업로드 흐름은 유지하고, 공모전 기능만 얹어 연결합니다.
+                접수는 VIDO.gallery에 업로드된 READY 작품 선택으로만 진행합니다.
               </p>
               <div className={styles.actions}>
+                <Link className={styles.applyButton} href="/awards/apply">
+                  지금 접수하기
+                </Link>
                 <Link className={styles.primaryButton} href="#contests">
                   진행중 공모전 보기
                 </Link>
@@ -88,13 +92,13 @@ export default function AwardsPage() {
             </div>
 
             <aside className={styles.submitPanel} aria-label="VIDO artwork submission path">
-              <span className={styles.panelLabel}>VIDO 작품으로 접수</span>
-              <h2>이미 업로드한 작품을 다시 쓰는 제출 흐름</h2>
+              <span className={styles.panelLabel}>접수 시작 위치</span>
+              <h2>접수는 공모전 카드의 `접수하기` 또는 이 버튼에서 시작합니다.</h2>
               <p>
-                기본 제출은 내 VIDO 작품 선택입니다. ZIP 업로드는 아직 VIDO에 올리지 않은 작품을 위한 보조 경로로 둡니다.
+                ZIP 직접 업로드는 사용하지 않습니다. 먼저 VIDO.gallery에 작품을 올리고, READY 상태 작품을 선택해 접수합니다.
               </p>
               <Link className={styles.panelLink} href="/awards/apply">
-                접수 흐름 보기
+                접수 페이지로 이동
               </Link>
             </aside>
           </div>
@@ -108,7 +112,7 @@ export default function AwardsPage() {
               <p className={styles.kicker}>인기 공모전</p>
               <h2>SHINSEGAE SQUARE AWARDS</h2>
             </div>
-            <span className={styles.status}>진행중</span>
+            <Link className={styles.featureApply} href="/awards/apply">접수하기</Link>
           </div>
 
           <article className={styles.featuredCard}>
@@ -120,10 +124,10 @@ export default function AwardsPage() {
               <h3>K-Heritage Media Art Shinsegae Square Awards</h3>
               <p>2026. 06. 15 (월) - 08.07 (금)</p>
               <div className={styles.actionsCompact}>
-                <Link className={styles.darkButton} href="#contests">
+                <Link className={styles.lineButton} href="#contests">
                   상세보기
                 </Link>
-                <Link className={styles.lineButton} href="/awards/apply">
+                <Link className={styles.darkButton} href="/awards/apply">
                   접수하기
                 </Link>
               </div>
@@ -140,13 +144,13 @@ export default function AwardsPage() {
               <h2>모집 중인 공모전을 확인하세요.</h2>
             </div>
             <p className={styles.sectionDescription}>
-              필요한 서류와 작품 파일을 간편하게 제출할 수 있도록 VIDO 작품 보관함과 연결합니다.
+              진행중 공모전 카드에서 바로 접수를 시작할 수 있습니다.
             </p>
           </div>
 
           <div className={styles.contestGrid}>
             {contests.map((contest) => (
-              <article className={styles.contestCard} key={contest.title}>
+              <article className={contest.open ? styles.contestCardOpen : styles.contestCard} key={contest.title}>
                 <div className={styles.cardTopline}>
                   <span className={contest.open ? styles.openBadge : styles.mutedBadge}>{contest.status}</span>
                   <span>{contest.deadline}</span>
@@ -208,6 +212,11 @@ export default function AwardsPage() {
           </div>
         </div>
       </section>
+
+      <div className={styles.stickyApply}>
+        <span>K-Heritage Media Art Shinsegae Square Awards 접수중</span>
+        <Link href="/awards/apply">접수하기</Link>
+      </div>
     </main>
   );
 }
