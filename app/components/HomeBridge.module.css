@@ -1,0 +1,99 @@
+.bridgeTools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -8px 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f7f7f7;
+  padding: 3px;
+}
+
+.segmented button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.segmented button:hover {
+  color: var(--ink);
+}
+
+.segmented .active {
+  background: #111;
+  color: #fff;
+}
+
+.mutedBadge {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.emptyState {
+  border-style: dashed;
+  background: #fafafa;
+}
+
+.actionCard {
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.actionCard:hover {
+  border-color: var(--blue);
+  transform: translateY(-1px);
+}
+
+.emptyPanel {
+  display: grid;
+  min-height: 268px;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: #fafafa;
+  padding: 28px;
+  text-align: center;
+}
+
+.emptyPanel strong {
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.emptyPanel span {
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.emptyPanel a {
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .bridgeTools {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .segmented,
+  .segmented button {
+    width: 100%;
+  }
+}
