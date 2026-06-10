@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import styles from "./HomeBridge.module.css";
 
 const readyArtworks = [
   { title: "Signal Archive 01", meta: "READY · 4K video · 03:12", tone: "one" },
@@ -33,18 +34,18 @@ export default function HomeBridge() {
           </p>
         </div>
 
-        <div className="bridge-tools" aria-label="Preview user artwork state">
+        <div className={styles.bridgeTools} aria-label="Preview user artwork state">
           <span>홈페이지 상태 미리보기</span>
-          <div className="segmented" role="group" aria-label="Artwork state preview">
+          <div className={styles.segmented} role="group" aria-label="Artwork state preview">
             <button
-              className={hasArtworks ? "active" : ""}
+              className={hasArtworks ? styles.active : ""}
               type="button"
               onClick={() => setHasArtworks(true)}
             >
               작품 있음
             </button>
             <button
-              className={!hasArtworks ? "active" : ""}
+              className={!hasArtworks ? styles.active : ""}
               type="button"
               onClick={() => setHasArtworks(false)}
             >
@@ -57,19 +58,19 @@ export default function HomeBridge() {
           <div className="panel">
             <div className="panel-head">
               <strong>내 VIDO 상태</strong>
-              <span className={hasArtworks ? "badge" : "badge muted"}>{status.label}</span>
+              <span className={hasArtworks ? "badge" : `badge ${styles.mutedBadge}`}>{status.label}</span>
             </div>
             <div className="panel-body">
-              <div className={hasArtworks ? "status-card" : "status-card empty-state"}>
+              <div className={hasArtworks ? "status-card" : `status-card ${styles.emptyState}`}>
                 <div>
                   <strong>{status.title}</strong>
                   <span>{status.body}</span>
                 </div>
-                <span className={hasArtworks ? "badge" : "badge muted"}>{status.label}</span>
+                <span className={hasArtworks ? "badge" : `badge ${styles.mutedBadge}`}>{status.label}</span>
               </div>
 
               {hasArtworks ? (
-                <Link className="status-card action-card" href="/awards">
+                <Link className={`status-card ${styles.actionCard}`} href="/awards">
                   <div>
                     <strong>진행중 공모전 4개</strong>
                     <span>조건에 맞는 공모전을 홈에서 바로 탐색합니다.</span>
@@ -77,7 +78,7 @@ export default function HomeBridge() {
                   <span className="badge blue">OPEN</span>
                 </Link>
               ) : (
-                <Link className="status-card action-card" href="/artworks/upload">
+                <Link className={`status-card ${styles.actionCard}`} href="/artworks/upload">
                   <div>
                     <strong>작품 업로드부터 시작</strong>
                     <span>업로드가 완료되면 이 영역에 제출 가능한 작품이 표시됩니다.</span>
@@ -91,7 +92,7 @@ export default function HomeBridge() {
           <div className="panel">
             <div className="panel-head">
               <strong>내 VIDO 작품</strong>
-              <span className={hasArtworks ? "badge" : "badge muted"}>
+              <span className={hasArtworks ? "badge" : `badge ${styles.mutedBadge}`}>
                 {hasArtworks ? "공모전 제출 가능" : "업로드 필요"}
               </span>
             </div>
@@ -109,7 +110,7 @@ export default function HomeBridge() {
                   ))}
                 </div>
               ) : (
-                <div className="empty-panel">
+                <div className={styles.emptyPanel}>
                   <strong>보관함이 비어 있습니다.</strong>
                   <span>작품을 업로드하면 이곳에서 READY 상태와 공모전 제출 가능 여부를 확인합니다.</span>
                   <Link className="btn dark" href="/artworks/upload">
