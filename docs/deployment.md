@@ -6,10 +6,19 @@ This branch prepares the VIDO homepage renewal for static deployment.
 
 GitHub Pages static deployment using Next.js static export.
 
+Expected project URL after Pages is enabled:
+
+```txt
+https://heyjoon.github.io/VIDO-Homepage-Renewal/
+```
+
 ## Files
 
 - `next.config.mjs` enables `output: "export"`.
-- `.github/workflows/deploy-pages.yml` builds the site and deploys `./out` to GitHub Pages.
+- `next.config.mjs` applies the GitHub repository name as `basePath` during GitHub Actions builds.
+- `public/.nojekyll` prevents GitHub Pages from filtering the exported `_next` assets.
+- `.github/workflows/deploy-pages.yml` verifies the build and deploys `./out` to GitHub Pages.
+- `.gitignore` keeps local install and build artifacts out of the repo.
 
 ## Local Verification
 
@@ -17,10 +26,10 @@ Run after cloning the branch locally:
 
 ```bash
 npm install
-npm run build
+npm run verify
 ```
 
-Optional:
+Optional local preview:
 
 ```bash
 npm run dev
@@ -55,6 +64,14 @@ Actions -> Deploy Next.js static site to GitHub Pages -> Run workflow
 - `/artworks/upload`
 - `/mypage`
 - `/admin`
+
+## Pre-Deploy Checklist
+
+- PR #2 is reviewed and merged to `main`.
+- GitHub Pages source is set to GitHub Actions.
+- The Pages workflow completes successfully on `main`.
+- The deployed URL opens without missing CSS or JavaScript assets.
+- Navigation works for the included routes.
 
 ## Known Limitations
 
