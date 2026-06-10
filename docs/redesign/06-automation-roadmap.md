@@ -47,20 +47,36 @@ Each run should finish one task and show the result.
 
 ## Stage 3: TypeScript Task Runner
 
-Create a runner that reads `agent/tasks/*.json` and launches Codex on one task at a time.
+Implemented under:
 
-The runner should track:
+```txt
+agent/orchestrator
+```
+
+The runner reads `agent/tasks/*.json` and launches Codex on one task at a time.
+
+It tracks:
 
 - task id
 - branch
-- files changed
-- commands run
-- result URL or screenshot
-- reviewer status
+- generated developer prompt
+- generated QA prompt
+- command used
+- developer result
+- QA reviewer result
+
+Run:
+
+```bash
+cd agent/orchestrator
+npm install
+npm run build
+node dist/index.js --dry-run --task H-002
+```
 
 ## Stage 4: Multi-Agent Orchestration
 
-Use:
+Target:
 
 ```txt
 Agents SDK + Codex MCP
@@ -72,7 +88,13 @@ Roles:
 - Developer: implements one task
 - QA: checks diff, commands, and preview
 
-Only move here after Stage 1 and Stage 2 are reliable.
+Adapter boundary prepared under:
+
+```txt
+agent/orchestrator/src/executors/agents-sdk-adapter.ts
+```
+
+Only move the runtime to Agents SDK + Codex MCP after Stage 1 and Stage 2 are reliable.
 
 ## Definition Of Done For Any Automation Run
 
