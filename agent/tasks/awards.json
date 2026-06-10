@@ -1,0 +1,64 @@
+{
+  "area": "awards",
+  "branch": "codex/awards-contests",
+  "tasks": [
+    {
+      "id": "A-001",
+      "title": "Add contest domain types and mock data",
+      "status": "todo",
+      "role": "Awards Worker",
+      "acceptanceCriteria": [
+        "Contest and submission types are defined",
+        "Mock contests include OPEN, CLOSED, and SCHEDULED states",
+        "Types reference Artwork by artworkId only"
+      ]
+    },
+    {
+      "id": "A-002",
+      "title": "Build contest list and detail routes",
+      "status": "todo",
+      "role": "Awards Worker",
+      "acceptanceCriteria": [
+        "Contest list displays open contests",
+        "Contest detail displays criteria and deadline",
+        "Detail page has clear apply CTA",
+        "Closed contests disable apply CTA"
+      ]
+    },
+    {
+      "id": "A-003",
+      "title": "Build ArtworkPicker primary submission path",
+      "status": "todo",
+      "role": "Awards Worker",
+      "acceptanceCriteria": [
+        "READY artworks are selectable",
+        "Non-ready artworks are shown as disabled or hidden",
+        "No-artwork state links to upload",
+        "Selected artwork can be submitted"
+      ]
+    },
+    {
+      "id": "A-004",
+      "title": "Add direct ZIP upload fallback state",
+      "status": "todo",
+      "role": "Awards Worker",
+      "acceptanceCriteria": [
+        "ZIP upload is secondary to ArtworkPicker",
+        "Fallback copy explains reuse limitation",
+        "Submission mode distinguishes VIDO_ARTWORK from DIRECT_UPLOAD"
+      ]
+    },
+    {
+      "id": "A-005",
+      "title": "Add contest submission API contract",
+      "status": "todo",
+      "role": "Awards Worker",
+      "acceptanceCriteria": [
+        "POST submission validates contest state",
+        "POST submission validates artwork ownership",
+        "POST submission rejects non-READY artworks",
+        "Response includes submission number and status"
+      ]
+    }
+  ]
+}
