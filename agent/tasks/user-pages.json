@@ -1,0 +1,63 @@
+{
+  "area": "user-pages",
+  "branch": "codex/user-mypage",
+  "tasks": [
+    {
+      "id": "M-001",
+      "title": "Add mypage dashboard data contract",
+      "status": "todo",
+      "role": "User Page Worker",
+      "acceptanceCriteria": [
+        "Dashboard contract includes user, stats, artworks, submissions, activity",
+        "Contract reads submissions but does not create them",
+        "Contract references Artwork by existing IDs"
+      ]
+    },
+    {
+      "id": "M-002",
+      "title": "Build my artwork summary and list",
+      "status": "todo",
+      "role": "User Page Worker",
+      "acceptanceCriteria": [
+        "Shows total artworks and READY artworks",
+        "Shows artwork status clearly",
+        "READY artwork has contest submission CTA",
+        "Empty state links to upload"
+      ]
+    },
+    {
+      "id": "M-003",
+      "title": "Build submission history section",
+      "status": "todo",
+      "role": "User Page Worker",
+      "acceptanceCriteria": [
+        "Shows contest title, artwork title, submission number, and status",
+        "Handles no-submissions state",
+        "Links to contest detail when available"
+      ]
+    },
+    {
+      "id": "M-004",
+      "title": "Build recent activity section",
+      "status": "todo",
+      "role": "User Page Worker",
+      "acceptanceCriteria": [
+        "Shows artwork upload activity",
+        "Shows artwork ready activity",
+        "Shows contest submission activity",
+        "Activity list remains readable on mobile"
+      ]
+    },
+    {
+      "id": "M-005",
+      "title": "Add profile/account section",
+      "status": "todo",
+      "role": "User Page Worker",
+      "acceptanceCriteria": [
+        "Shows user identity fields",
+        "Supports safe profile edit state",
+        "Does not expose admin-only fields"
+      ]
+    }
+  ]
+}

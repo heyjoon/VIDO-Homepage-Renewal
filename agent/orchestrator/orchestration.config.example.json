@@ -1,0 +1,8 @@
+{
+  "defaultTaskId": "H-002",
+  "preferredFirstAreas": ["homepage", "user-pages", "awards"],
+  "blockedFirstTargets": ["/admin/users", "auth", "permissions", "destructive CRUD"],
+  "executor": "codex-cli",
+  "futureExecutor": "agents-sdk-codex-mcp",
+  "showResultRequired": true
+}
