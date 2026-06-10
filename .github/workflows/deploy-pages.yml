@@ -25,7 +25,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -33,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build static site
-        run: npm run build
+      - name: Verify static build
+        run: npm run verify
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
