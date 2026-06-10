@@ -98,6 +98,7 @@ Purpose:
 - run available tests/build/lint
 - review responsive behavior and permissions
 - summarize risk before PR
+- make the result visible before the final response
 
 Required checks:
 
@@ -106,3 +107,4 @@ Required checks:
 - empty states
 - loading/error states
 - mobile and desktop layout
+- preview route, deployed URL, browser tab, screenshot, or local artifact is provided at the end
